@@ -9,7 +9,7 @@
   <build>
     <sourceDirectory>src/main/java</sourceDirectory>
     <plugins>
-      <plugin>
+     <!--  <plugin>
         <groupId>org.apache.tomcat.maven</groupId>
         <artifactId>tomcat6-maven-plugin</artifactId>
         <version>2.1</version>
@@ -30,8 +30,8 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
+      </plugin> -->
+      <!-- <plugin>
         <artifactId>maven-failsafe-plugin</artifactId>
         <version>2.6</version>
         <executions>
@@ -42,9 +42,9 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
+      </plugin> -->
       <!-- executes the scala-based tests -->
-      <plugin>
+      <!-- <plugin>
         <groupId>net.alchim31.maven</groupId>
         <artifactId>scala-maven-plugin</artifactId>
         <executions>
@@ -80,7 +80,7 @@
             </launcher>
           </launchers>
         </configuration>
-      </plugin>
+      </plugin> -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
