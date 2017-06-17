@@ -9,7 +9,7 @@
 
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
-	     	<plugins>
+	        	<plugins>
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat6-maven-plugin</artifactId>
