@@ -21,14 +21,14 @@ public class UserRepositoryService implements UserService {
 //        this.userRepository = userRepository;
 //    }
 	
-	@Override
+	//@Override
 	public void registerUser(UserProfile userProfile) {
 		userRepository.save(userProfile);
 	}
 
-	@Override
+	/*@Override
 	public UserProfile getUserByMobile(String mobile) {
 		return null;
 	}
-
+*/
 }

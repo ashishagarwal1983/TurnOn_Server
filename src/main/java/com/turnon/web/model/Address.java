@@ -4,6 +4,14 @@ public class Address {
     //TODO FIXME add required fields here
     String addressLine1;
 
+    
+    public Address() {
+   	}
+       
+
+   	public Address(String addressLine1) {
+   		this.addressLine1 = addressLine1;
+   	} 
     public String getAddressLine1() {
         return addressLine1;
     }

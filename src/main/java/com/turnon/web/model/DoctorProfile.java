@@ -1,9 +1,13 @@
 package com.turnon.web.model;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class DoctorProfile extends UserProfile implements Serializable {
+import javax.xml.bind.annotation.XmlRootElement;
+
+
+
+@XmlRootElement(name="doctor")
+public class DoctorProfile { // extends UserProfile implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String registrationNo;
 	private List<String> qualifications;
@@ -18,6 +22,19 @@ public class DoctorProfile extends UserProfile implements Serializable {
 
 	public void setRegistrationNo(String registrationNo) {
 		this.registrationNo = registrationNo;
+	}
+
+	public DoctorProfile() {
+	}
+
+	
+	public DoctorProfile(String registrationNo, List<String> qualifications, List<String> specialities,
+			List<Clinic> clinics, String treatmentTime) {
+		this.registrationNo = registrationNo;
+		this.qualifications = qualifications;
+		this.specialities = specialities;
+		this.clinics = clinics;
+		this.treatmentTime = treatmentTime;
 	}
 
 	public List<String> getQualifications() {
@@ -50,9 +67,11 @@ public class DoctorProfile extends UserProfile implements Serializable {
 
 	public void setTreatmentTime(String treatmentTime) {
 		this.treatmentTime = treatmentTime;
-	}
+	} 
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	
 }

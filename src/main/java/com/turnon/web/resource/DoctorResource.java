@@ -1,28 +1,25 @@
 package com.turnon.web.resource;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-
 import java.lang.reflect.InvocationTargetException;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.turnon.core.services.DoctorService;
-import com.turnon.web.model.UserProfile;
+import com.turnon.web.model.DoctorProfile;
+
+import io.swagger.annotations.Api;
 
 @Path("/doctor")
-@Api(value = "/doctor", description = "Operations about pets")
-@Produces("application/json")
+@Api(value = "/doctor", description = "Operations about doctors")
 public class DoctorResource {
     
 	@Autowired
@@ -31,19 +28,21 @@ public class DoctorResource {
 	
 	@Path("/test")
 	@GET
+	//@ApiOperation(value = "TestAPi")
 	public String testMethod(){
-		return "Hello World";
+		return "Hello";
 	}
 	
 	@Path("/profile/registerdoctor")
 	@POST
-	@ApiOperation(value = "Find pet by ID", notes = "Returns a user when 0 < ID <= 10. ID > 10 or nonintegers will simulate API error conditions", response = Response.class)
-	@ApiResponses(value = { @ApiResponse(code = 400, message = "Invalid ID supplied"), @ApiResponse(code = 404, message = "user not found") })
-	public Response registerdoctor(@ApiParam(value = "ID of pet that needs to be fetched", allowableValues = "range[1,10]", required = true)UserProfile userProfile) throws IllegalAccessException, InvocationTargetException{
-	com.turnon.core.model.UserProfile doctorModel = new com.turnon.core.model.UserProfile();
-    BeanUtils.copyProperties(userProfile, doctorModel);
+	@Consumes(MediaType.APPLICATION_JSON)
+	//@ApiOperation(value = "Add a Doctor", response = Response.class)
+	//@ApiResponses(value = { @ApiResponse(code = 400, message = "Invalid ID supplied"), @ApiResponse(code = 404, message = "user not found") })
+	public Response registerdoctor(@RequestBody DoctorProfile doctorProfile) throws IllegalAccessException, InvocationTargetException{
+	com.turnon.core.model.DoctorProfile doctorModel = new com.turnon.core.model.DoctorProfile();
+    BeanUtils.copyProperties(doctorProfile, doctorModel);
     doctorService.registerDoctor(doctorModel);
-    return Response.ok().build();
+    return Response.ok("Done12132313").build();
 	}
 
 	/*public void setDoctorService(DoctorService doctorService) {

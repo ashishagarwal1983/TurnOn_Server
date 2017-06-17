@@ -24,8 +24,8 @@
   <couchbase:cluster>
 		<couchbase:node>127.0.0.1</couchbase:node>
 	</couchbase:cluster>
-	<couchbase:clusterInfo login="Administrator" password="turnon" />
-	<couchbase:bucket bucketName="turnon" bucketPassword="turnon" />
+	<couchbase:clusterInfo login="turnon" password="turnon" />
+	<couchbase:bucket bucketName="default"/>
 
 	<couchbase:repositories base-package="com.turnon.core.couchbaserepo" />
 	<bean id="couchbaseEnv"
@@ -41,8 +41,8 @@
   <bean id="swaggerWriter" class="io.swagger.jaxrs.listing.SwaggerSerializers" />
 
   <!-- JSON mapper -->
-  <bean id="jsonProvider" class="com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider" />
-
+  <!-- <bean id="jsonProvider" class="com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider" /> -->
+<bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider" />
   <!-- Application resources -->
   <bean id="doctorResource" class="com.turnon.web.resource.DoctorResource" />
   
@@ -54,7 +54,7 @@
     <property name="resourcePackage" value="com.turnon.web.resource"/>
     <property name="version" value="1.0.0"/>
     <property name="host" value="localhost:8090/turnon"/>
-    <property name="basePath" value="/v1/api"/>
+    <property name="basePath" value="/api/v1"/>
     <property name="title" value="Swagger TurnOn"/>
     <property name="description" value="This is a app."/>
     <property name="contact" value="apiteam@swagger.io"/>
@@ -63,6 +63,8 @@
     <!-- <property name="filterClass" value="ApiAuthorizationFilterImpl"/> -->
     <property name="scan" value="true"/>
   </bean>
+  
+  
   
   <jaxrs:server id="turnOn" address="/v1">
 		<jaxrs:providers>
@@ -74,9 +76,9 @@
 			<ref bean="doctorResource" />
 			<ref bean="swaggerResource" />
 		</jaxrs:serviceBeans>
-		<!-- <jaxrs:extensionMappings>
+	 <!-- <jaxrs:extensionMappings>
 			<entry key="xml" value="application/xml;charset=UTF-8" />
 			<entry key="json" value="application/json;charset=UTF-8" />
-		</jaxrs:extensionMappings> -->
+		</jaxrs:extensionMappings>  -->
 	</jaxrs:server>
 </beans>

@@ -6,5 +6,5 @@ import com.turnon.core.model.UserProfile;
 public interface UserService {
 
     void registerUser(UserProfile userProfile);
-    UserProfile getUserByMobile(String mobile);
+    //UserProfile getUserByMobile(String mobile);
 }
